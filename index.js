@@ -62,6 +62,7 @@ const categoryWiseLoadApiData = async() =>{
 categoryWiseLoadApiData();
 function showApiDataByCategory(dataByCategory){
   console.log(dataByCategory.data);
+  const hr=3600;
 const datas = dataByCategory.data;
   const apiDataContainer = document.getElementById('api-data-container');
   apiDataContainer.textContent='';
@@ -70,15 +71,19 @@ const datas = dataByCategory.data;
   const div = document.createElement('div');
   
   div.innerHTML=`<div class="card bg-base-100 shadow-xl">
-  <figure><img class="w-72 h-48" src="${data.thumbnail}" /></figure>
-   <div class="card-body">
+  <figure><img class="w-72 h-48 rounded-xl" src="${data.thumbnail}" />
+  </figure>
+  <div class="card-body">
 <div class="flex gap-3">
   <div>
-    <img src="" alt="Author pic">
+    <img class="w-8 h-8 rounded-2xl" src="${data.authors[0].profile_picture}" alt="Author pic">
   </div>
   <div class="text-left">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <h2 class="card-title">${data.title}</h2>
+    <p>${data.authors[0].profile_name}
+     ${data.authors[0].verified === true ? `<img class="w-4 inline" src="verified.svg" />` : ''}
+    </p>
+    <p>${data.others.views} views</p>
   </div>
 </div>
   </div>`;
