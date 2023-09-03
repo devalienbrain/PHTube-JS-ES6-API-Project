@@ -62,4 +62,27 @@ const categoryWiseLoadApiData = async() =>{
 categoryWiseLoadApiData();
 function showApiDataByCategory(dataByCategory){
   console.log(dataByCategory.data);
+const datas = dataByCategory.data;
+  const apiDataContainer = document.getElementById('api-data-container');
+  apiDataContainer.textContent='';
+  datas.forEach(data => {
+    console.log(data);
+  const div = document.createElement('div');
+  
+  div.innerHTML=`<div class="card bg-base-100 shadow-xl">
+  <figure><img class="w-72 h-48" src="${data.thumbnail}" /></figure>
+   <div class="card-body">
+<div class="flex gap-3">
+  <div>
+    <img src="" alt="Author pic">
+  </div>
+  <div class="text-left">
+    <h2 class="card-title">Shoes!</h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+  </div>
+</div>
+  </div>`;
+
+apiDataContainer.appendChild(div);
+});
 }
