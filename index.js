@@ -109,6 +109,11 @@ timeAgo = `${hr}hrs ${min}min ago`;
   div.innerHTML=`<div class="card bg-base-100 shadow-xl">
   <figure><img class="w-72 h-48 rounded-xl" src="${data.thumbnail}" />
   </figure>
+  <div> ${time!== 0 ? 
+`<div class="flex justify-end mr-4 -mt-9">
+  <p class="bg-black text-white">${timeAgo}</p>
+</div>` : ''} 
+</div>
   <div class="card-body">
 <div class="flex gap-3">
   <div>
