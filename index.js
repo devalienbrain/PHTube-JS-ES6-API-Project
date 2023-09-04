@@ -107,11 +107,12 @@ timeAgo = `${hr}hrs ${min}min ago`;
     const div = document.createElement('div');
   
   div.innerHTML=`<div class="card bg-base-100 shadow-xl">
-  <figure><img class="w-72 h-48 rounded-xl" src="${data.thumbnail}" />
+  <figure><img class="w-80 h-52 rounded-xl" src="${data.thumbnail}" />
+  
   </figure>
   <div> ${time!== 0 ? 
-`<div class="flex justify-end mr-4 -mt-9">
-  <p class="bg-black text-white">${timeAgo}</p>
+`<div class="flex justify-end mr-9 -mt-9">
+  <p class="bg-black text-white text-xs">${timeAgo}</p>
 </div>` : ''} 
 </div>
   <div class="card-body">
