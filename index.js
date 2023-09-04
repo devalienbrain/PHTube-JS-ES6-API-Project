@@ -74,7 +74,7 @@ function showApiDataByCategory(dataByCategory){
 const datas = dataByCategory.data;
   const apiDataContainer = document.getElementById('api-data-container');
   apiDataContainer.textContent='';
-
+// No data display handle
 // console.log(datas.length);
 const noData = document.getElementById("no-data");
 noData.textContent='';
@@ -91,7 +91,20 @@ content here</p>
 }
   datas.forEach(data => {
     // console.log(data);
-  const div = document.createElement('div');
+
+    // time conversion process code
+    // console.log(data.others.posted_date);
+    let timeAgo = '';
+    const time=data.others.posted_date;
+    if(time){
+const hr = Math.floor(time/3600);
+const min = Math.floor((time- hr*3600)/60);
+// console.log(`${hr}hrs ${min}min ago`);
+timeAgo = `${hr}hrs ${min}min ago`;
+// console.log(timeAgo);
+    }
+
+    const div = document.createElement('div');
   
   div.innerHTML=`<div class="card bg-base-100 shadow-xl">
   <figure><img class="w-72 h-48 rounded-xl" src="${data.thumbnail}" />
