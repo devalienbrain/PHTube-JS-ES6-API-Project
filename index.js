@@ -74,6 +74,21 @@ function showApiDataByCategory(dataByCategory){
 const datas = dataByCategory.data;
   const apiDataContainer = document.getElementById('api-data-container');
   apiDataContainer.textContent='';
+
+// console.log(datas.length);
+const noData = document.getElementById("no-data");
+noData.textContent='';
+if(datas.length === 0){
+  const div = document.createElement('div');
+  div.innerHTML=`<div class="p-5">
+  <img class="inline " src="icon.png" alt="">
+<p class="font-bold text-2xl">Oops!! Sorry, There is no 
+content here</p>
+  </div>
+  `;
+  noData.appendChild(div);
+  return;
+}
   datas.forEach(data => {
     // console.log(data);
   const div = document.createElement('div');
@@ -98,6 +113,7 @@ const datas = dataByCategory.data;
 
 apiDataContainer.appendChild(div);
 });
+
 }
 
 // sorting part
