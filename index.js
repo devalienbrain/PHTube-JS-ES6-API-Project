@@ -54,20 +54,28 @@ event.classList.remove('bg-gray-200');
   categoryWiseLoadApiData();
 }
 
-const categoryWiseLoadApiData = async() =>{
+const categoryWiseLoadApiData = async(isSort) =>{
   const apiDataByCategory = await fetch(url);
   const dataByCategory = await apiDataByCategory.json();
+
+  // console.log(dataByCategory);
+  // SORT CODE
+  if(isSort){
+// console.log('sort')
+dataByCategory.data.sort((a,b) => parseFloat(b.others.views)-parseFloat(a.others.views));
+  }
+    // console.log(dataByCategory);
   showApiDataByCategory(dataByCategory);
 }
 categoryWiseLoadApiData();
 function showApiDataByCategory(dataByCategory){
-  console.log(dataByCategory.data);
+  // console.log(dataByCategory.data);
   const hr=3600;
 const datas = dataByCategory.data;
   const apiDataContainer = document.getElementById('api-data-container');
   apiDataContainer.textContent='';
   datas.forEach(data => {
-    console.log(data);
+    // console.log(data);
   const div = document.createElement('div');
   
   div.innerHTML=`<div class="card bg-base-100 shadow-xl">
@@ -91,3 +99,9 @@ const datas = dataByCategory.data;
 apiDataContainer.appendChild(div);
 });
 }
+
+// sorting part
+function sortItemsBtnClicked(){
+categoryWiseLoadApiData(true);
+}
+
